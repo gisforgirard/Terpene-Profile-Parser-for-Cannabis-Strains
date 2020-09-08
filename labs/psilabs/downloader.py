@@ -99,7 +99,7 @@ def write_to_csv(filepath, fieldnames, data):
 			writefile_writer.writeheader()
 		writefile_writer.writerow(data)
 
-URL_sample_result = 'https://psilabs.org/results/test-results/show/'
+URL_sample_result = 'https://results.psilabs.org/test-results/'
 counter = 1
 os.makedirs(args.save_path, exist_ok=True)
 
@@ -119,7 +119,7 @@ try:
 	else:
 		browser=webdriver.Firefox(options=options)
 
-	browser.get('https://psilabs.org/results/test-results/?page=1')
+	browser.get('https://results.psilabs.org/test-results/?page=1')
 	results_list_loaded = wait_for_element(
 		'//sample-card/md-card/md-card-title/md-card-title-text/span/a'
 	)
@@ -181,7 +181,7 @@ try:
 		sample_urls = []
 		for search_result_element in raw_search_results:
 			search_result_url = search_result_element.get_attribute('href')
-			if search_result_url.startswith('https://psilabs.org/results/clients'):
+			if search_result_url.startswith('https://results.psilabs.org/clients/show/'):
 				continue
 			sample_urls.append(search_result_url)
 		for sample_url in sample_urls:
